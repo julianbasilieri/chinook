@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Invoice_items {
+public class InvoiceItems {
     @Id
     @GeneratedValue(generator = "invoice_items")
     @TableGenerator(name = "invoice_items", table = "sqlite_sequence",

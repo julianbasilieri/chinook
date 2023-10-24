@@ -21,7 +21,7 @@ public class Track {
     private int MediaTypeId;
     private int Genreid;
     private String Composer;
-    private int Miliseconds;
+    private int Milliseconds;
     private int Bytes;
     private float UnitPrice;
 }

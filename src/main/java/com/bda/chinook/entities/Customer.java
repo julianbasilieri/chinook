@@ -17,7 +17,6 @@ public class Customer {
     @GeneratedValue(generator = "customers")
     @TableGenerator(name = "customers", table = "sqlite_sequence",
     pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "customer_id")
-    @Column(name = "CustomerId")
     private int CustomerId;
     private String FirstName;
     private String LastName;
