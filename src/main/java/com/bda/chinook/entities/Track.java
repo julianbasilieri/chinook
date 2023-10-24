@@ -12,16 +12,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Track {
     @Id
-    @GeneratedValue(generator = "tracks")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableGenerator(name = "tracks", table = "sqlite_sequence",
     pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "track_id")
     private int TrackId;
     private String Name;
     private int AlbumId;
     private int MediaTypeId;
-    private int Genreid;
+    private int GenreId;
     private String Composer;
-    private int Miliseconds;
+    private int Milliseconds;
     private int Bytes;
     private float UnitPrice;
 }

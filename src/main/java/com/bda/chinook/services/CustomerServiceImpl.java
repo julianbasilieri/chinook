@@ -25,7 +25,19 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void add(CustomerDto entity) {
-        Customer customer = Optional.of(entity).map(customerMapper).orElseThrow();
+        Customer customer = new Customer();
+        customer.setFirstName(entity.getFirstName());
+        customer.setLastName(entity.getLastName());
+        customer.setCompany(entity.getCompany());
+        customer.setAddress(entity.getAddress());
+        customer.setCity(entity.getCity());
+        customer.setState(entity.getState());
+        customer.setCountry(entity.getCountry());
+        customer.setPostalCode(entity.getPostalCode());
+        customer.setPhone(entity.getPhone());
+        customer.setFax(entity.getFax());
+        customer.setEmail(entity.getEmail());
+        customer.setSupportRepId(entity.getSupportRepId());
         customerRepository.save(customer);
     }
 

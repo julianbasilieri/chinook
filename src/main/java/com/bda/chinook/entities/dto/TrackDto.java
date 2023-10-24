@@ -12,9 +12,9 @@ public class TrackDto {
     private String Name;
     private int AlbumId;
     private int MediaTypeId;
-    private int Genreid;
+    private int GenreId;
     private String Composer;
-    private int Miliseconds;
+    private int Milliseconds;
     private int Bytes;
     private float UnitPrice;
 }

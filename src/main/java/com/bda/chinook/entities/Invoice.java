@@ -15,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 public class Invoice {
     @Id
-    @GeneratedValue(generator = "invoices")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableGenerator(name = "invoices", table = "sqlite_sequence",
     pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "invoice_id")
     private int InvoiceId;
@@ -30,5 +30,5 @@ public class Invoice {
     private String BillingPostalCode;
     private float Total;
     @OneToMany(mappedBy = "invoice", fetch = FetchType.EAGER)
-    private List<Invoice_items> invoiceItems;
+    private List<InvoiceItems> invoiceItems;
 }

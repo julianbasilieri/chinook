@@ -1,8 +1,11 @@
 package com.bda.chinook.entities.dto;
 
+import com.bda.chinook.entities.Invoice;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor

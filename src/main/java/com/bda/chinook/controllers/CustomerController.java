@@ -4,10 +4,7 @@ import com.bda.chinook.entities.dto.CustomerDto;
 import com.bda.chinook.services.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -30,5 +27,23 @@ public class CustomerController {
     public ResponseEntity<CustomerDto> getById(@PathVariable("id") int id) {
         CustomerDto value = customerService.getById(id);
         return ResponseEntity.ok(value);
+    }
+
+    @PostMapping
+    public ResponseEntity<Void> add(@RequestBody CustomerDto entity) {
+        customerService.add(entity);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @PutMapping
+    public ResponseEntity<Void> update(@RequestBody CustomerDto entity) {
+        customerService.update(entity);
+        return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable("id") int id) {
+        customerService.delete(id);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }

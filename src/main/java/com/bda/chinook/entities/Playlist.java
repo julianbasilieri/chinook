@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Playlist {
     @Id
-    @GeneratedValue(generator = "playlists")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableGenerator(name = "playlists", table = "sqlite_sequence",
     pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "playlist_id")
     private int PlaylistId;
