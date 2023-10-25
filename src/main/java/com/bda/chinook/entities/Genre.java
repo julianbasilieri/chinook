@@ -21,6 +21,5 @@ public class Genre {
     private int genreId;
     private String Name;
     @OneToMany(mappedBy = "genre")
-    @JsonIgnore
     private List<Track> tracks;
 }

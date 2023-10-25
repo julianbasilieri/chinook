@@ -21,6 +21,5 @@ public class Artist {
     private int artistId;
     private String Name;
     @OneToMany(mappedBy = "artist")
-    @JsonIgnore
     private List<Album> albums;
 }

@@ -1,5 +1,6 @@
 package com.bda.chinook.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +22,7 @@ public class Invoice {
     private int InvoiceId;
     @ManyToOne
     @JoinColumn(name = "CustomerId")
+    @JsonIgnore
     private Customer customer;
     private Date InvoiceDate;
     private String BillingAddress;

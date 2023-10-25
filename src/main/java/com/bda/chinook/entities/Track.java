@@ -22,7 +22,6 @@ public class Track {
     private String Name;
     @ManyToOne
     @JoinColumn(name = "AlbumId")
-    @JsonIgnore
     private Album album;
     @ManyToOne
     @JoinColumn(name = "MediaTypeId")

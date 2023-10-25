@@ -21,6 +21,5 @@ public class MediaType {
     private int MediaTypeId;
     private String Name;
     @OneToMany(mappedBy = "mediaType")
-    @JsonIgnore
     private List<Track> tracks;
 }

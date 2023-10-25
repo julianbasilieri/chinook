@@ -32,6 +32,6 @@ public class TrackMapper implements Function<TrackDto, Track> {
                 trackDto.getMilliseconds(),
                 trackDto.getBytes(),
                 trackDto.getUnitPrice(),
-                new ArrayList<>());
+                trackDto.getInvoiceItems());
     }
 }

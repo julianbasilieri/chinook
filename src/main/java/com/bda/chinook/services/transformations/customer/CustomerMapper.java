@@ -30,6 +30,6 @@ public class CustomerMapper implements Function<CustomerDto, Customer> {
                 customerDto.getFax(),
                 customerDto.getEmail(),
                 employeeRepository.getReferenceById(customerDto.getSupportRepId()),
-                new ArrayList<>());
+                customerDto.getInvoices());
     }
 }

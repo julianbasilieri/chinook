@@ -1,8 +1,11 @@
 package com.bda.chinook.entities.dto;
 
+import com.bda.chinook.entities.InvoiceItems;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -17,4 +20,5 @@ public class TrackDto {
     private int Milliseconds;
     private int Bytes;
     private float UnitPrice;
+    List<InvoiceItems> invoiceItems;
 }

@@ -18,6 +18,7 @@ public class InvoiceDtoMapper implements Function<Invoice, InvoiceDto> {
                 invoice.getBillingState(),
                 invoice.getBillingCountry(),
                 invoice.getBillingPostalCode(),
-                invoice.getTotal());
+                invoice.getTotal(),
+                invoice.getInvoiceItems());
     }
 }

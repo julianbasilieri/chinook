@@ -24,4 +24,5 @@ public class CustomerDto {
     private String Fax;
     private String Email;
     private int SupportRepId;
+    List<Invoice> invoices;
 }
