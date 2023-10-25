@@ -29,7 +29,9 @@ public class Customer {
     private String Phone;
     private String Fax;
     private String Email;
-    private int SupportRepId;
-    @OneToMany(mappedBy = "customer", fetch = FetchType.EAGER)
+    @ManyToOne
+    @JoinColumn(name = "SupportRepId")
+    private Employee employee;
+    @OneToMany(mappedBy = "customer")
     private List<Invoice> invoices;
 }

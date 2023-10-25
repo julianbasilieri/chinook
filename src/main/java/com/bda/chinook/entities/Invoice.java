@@ -29,6 +29,6 @@ public class Invoice {
     private String BillingCountry;
     private String BillingPostalCode;
     private float Total;
-    @OneToMany(mappedBy = "invoice", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "invoice")
     private List<InvoiceItems> invoiceItems;
 }

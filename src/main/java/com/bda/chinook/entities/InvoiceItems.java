@@ -1,5 +1,6 @@
 package com.bda.chinook.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -18,9 +19,11 @@ public class InvoiceItems {
     private int InvoiceLineId;
     @ManyToOne
     @JoinColumn(name = "InvoiceId")
+    @JsonIgnore
     private Invoice invoice;
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "TrackId")
+    @JsonIgnore
     private Track track;
     private float UnitPrice;
     private int Quantity;

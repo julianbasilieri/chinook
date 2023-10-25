@@ -24,7 +24,7 @@ public class CustomerDtoMapper implements Function<Customer, CustomerDto> {
                 customer.getPhone(),
                 customer.getFax(),
                 customer.getEmail(),
-                customer.getSupportRepId());
+                customer.getEmployee().getEmployeeId());
 
     }
 }

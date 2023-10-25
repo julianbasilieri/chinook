@@ -1,5 +1,6 @@
 package com.bda.chinook.controllers;
 
+import com.bda.chinook.entities.TrackByGenreArtist;
 import com.bda.chinook.entities.dto.TrackDto;
 import com.bda.chinook.services.TrackService;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,12 @@ public class TrackController {
     public ResponseEntity<Void> delete(@PathVariable("id") int id) {
         trackService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/filtro")
+    public ResponseEntity<List<TrackByGenreArtist>> getAllTrackByGenreArtist(@RequestParam("artistId") int artistId,
+                                                                @RequestParam("genreId") int genreId) {
+        List<TrackByGenreArtist> trackByGenreArtists = trackService.getAllByGenreArtist(genreId, artistId);
+        return ResponseEntity.ok(trackByGenreArtists);
     }
 }

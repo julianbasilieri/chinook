@@ -1,11 +1,12 @@
 package com.bda.chinook.services;
 
 import com.bda.chinook.entities.Track;
+import com.bda.chinook.entities.TrackByGenreArtist;
 import com.bda.chinook.entities.dto.TrackDto;
-import com.bda.chinook.repositories.TrackRepository;
-import com.bda.chinook.services.TrackService;
+import com.bda.chinook.repositories.*;
 import com.bda.chinook.services.transformations.track.TrackDtoMapper;
 import com.bda.chinook.services.transformations.track.TrackMapper;
+import com.bda.chinook.services.transformations.track.TrackToTrackByGenreArtist;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,20 +17,30 @@ public class TrackServiceImpl implements TrackService {
     private final TrackRepository trackRepository;
     private final TrackDtoMapper trackDtoMapper;
     private final TrackMapper trackMapper;
+    private final TrackToTrackByGenreArtist trackToTrackByGenreArtist;
+    private final AlbumRepository albumRepository;
+    private final GenreRepository genreRepository;
+    private final MediaTypeRepository mediaTypeRepository;
+    public final ArtistRepostitory artistRepostitory;
 
-    public TrackServiceImpl(TrackRepository trackRepository, TrackDtoMapper trackDtoMapper, TrackMapper trackMapper) {
+    public TrackServiceImpl(TrackRepository trackRepository, TrackDtoMapper trackDtoMapper, TrackMapper trackMapper, TrackToTrackByGenreArtist trackToTrackByGenreArtist, AlbumRepository albumRepository, GenreRepository genreRepository, MediaTypeRepository mediaTypeRepository, ArtistRepostitory artistRepostitory) {
         this.trackRepository = trackRepository;
         this.trackDtoMapper = trackDtoMapper;
         this.trackMapper = trackMapper;
+        this.trackToTrackByGenreArtist = trackToTrackByGenreArtist;
+        this.albumRepository = albumRepository;
+        this.genreRepository = genreRepository;
+        this.mediaTypeRepository = mediaTypeRepository;
+        this.artistRepostitory = artistRepostitory;
     }
 
     @Override
     public void add(TrackDto entity) {
         Track track = new Track();
         track.setName(entity.getName());
-        track.setAlbumId(entity.getAlbumId());
-        track.setMediaTypeId(entity.getMediaTypeId());
-        track.setGenreId(entity.getGenreId());
+        albumRepository.getReferenceById(entity.getAlbumId());
+        mediaTypeRepository.getReferenceById(entity.getMediaTypeId());
+        genreRepository.getReferenceById(entity.getGenreId());
         track.setComposer(entity.getComposer());
         track.setMilliseconds(entity.getMilliseconds());
         track.setBytes(entity.getBytes());
@@ -67,5 +78,14 @@ public class TrackServiceImpl implements TrackService {
         return value
                 .map(trackDtoMapper)
                 .orElseThrow();
+    }
+
+    @Override
+    public List<TrackByGenreArtist> getAllByGenreArtist(Integer genreId, Integer artistId) {
+        List<Track> tracks = trackRepository.findByAlbum_ArtistArtistIdAndGenreGenreId(artistId, genreId);
+        return tracks
+                .stream()
+                .map(trackToTrackByGenreArtist)
+                .toList();
     }
 }
