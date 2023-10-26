@@ -1,12 +1,14 @@
 package com.bda.chinook.services;
 
 import com.bda.chinook.entities.Playlist;
+import com.bda.chinook.entities.Track;
 import com.bda.chinook.entities.dto.PlaylistDto;
 import com.bda.chinook.repositories.PlaylistRepository;
 import com.bda.chinook.services.transformations.playlist.PlaylistDtoMapper;
 import com.bda.chinook.services.transformations.playlist.PlaylistMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -26,6 +28,7 @@ public class PlaylistServiceImpl implements PlaylistService {
     public void add(PlaylistDto entity) {
         Playlist playlist = new Playlist();
         playlist.setName(entity.getName());
+        playlist.setTracks(new ArrayList<>());
         playlistRepository.save(playlist);
     }
 
@@ -59,5 +62,12 @@ public class PlaylistServiceImpl implements PlaylistService {
         return value
                 .map(playlistDtoMapper)
                 .orElseThrow();
+    }
+
+    @Override
+    public List<Track> getTracksInPlaylist(int playlistId) {
+        Playlist playlist = playlistRepository.findById(playlistId).orElseThrow();
+        return playlist.getTracks();
+
     }
 }

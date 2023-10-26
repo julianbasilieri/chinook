@@ -1,8 +1,6 @@
 package com.bda.chinook.services;
 
-import com.bda.chinook.entities.Track;
-import com.bda.chinook.entities.TrackByGenreArtist;
-import com.bda.chinook.entities.dto.PlaylistDto;
+import com.bda.chinook.entities.dto.TrackByGenreArtist;
 import com.bda.chinook.entities.dto.TrackDto;
 
 import java.util.List;

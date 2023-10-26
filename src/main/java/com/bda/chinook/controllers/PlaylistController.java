@@ -1,5 +1,6 @@
 package com.bda.chinook.controllers;
 
+import com.bda.chinook.entities.Track;
 import com.bda.chinook.entities.dto.PlaylistDto;
 import com.bda.chinook.services.PlaylistService;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,11 @@ public class PlaylistController {
     public ResponseEntity<Void> delete(@PathVariable("id") int id) {
         playlistService.delete(id);
         return ResponseEntity.status(HttpStatus.OK).build();
+    }
+
+    @GetMapping("/{playlistId}/tracks")
+    public ResponseEntity<List<Track>> getTracksInPlaylist(@PathVariable int playlistId) {
+        List<Track> tracks = playlistService.getTracksInPlaylist(playlistId);
+        return ResponseEntity.ok(tracks);
     }
 }

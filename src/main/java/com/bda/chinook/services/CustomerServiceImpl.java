@@ -1,6 +1,7 @@
 package com.bda.chinook.services;
 
 import com.bda.chinook.entities.Customer;
+import com.bda.chinook.entities.Invoice;
 import com.bda.chinook.entities.dto.CustomerDto;
 import com.bda.chinook.repositories.CustomerRepository;
 import com.bda.chinook.repositories.EmployeeRepository;

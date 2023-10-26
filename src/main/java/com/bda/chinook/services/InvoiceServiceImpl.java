@@ -8,6 +8,7 @@ import com.bda.chinook.services.transformations.invoice.InvoiceDtoMapper;
 import com.bda.chinook.services.transformations.invoice.InvoiceMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -37,6 +38,7 @@ public class InvoiceServiceImpl implements InvoiceService {
         invoice.setBillingPostalCode(entity.getBillingPostalCode());
         invoice.setTotal(entity.getTotal());
         invoice.setCustomer(customerRepository.getReferenceById(entity.getCustomerId()));
+        invoice.setInvoiceItems(new ArrayList<>());
         invoiceRepository.save(invoice);
     }
 

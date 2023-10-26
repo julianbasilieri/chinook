@@ -1,6 +1,7 @@
 package com.bda.chinook.entities.dto;
 
 import com.bda.chinook.entities.InvoiceItems;
+import com.bda.chinook.entities.Playlist;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,4 +22,5 @@ public class TrackDto {
     private int Bytes;
     private float UnitPrice;
     List<InvoiceItems> invoiceItems;
+    private List<Playlist> playlists;
 }

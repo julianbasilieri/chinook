@@ -1,4 +1,4 @@
-package com.bda.chinook.entities;
+package com.bda.chinook.entities.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,6 +1,6 @@
 package com.bda.chinook.controllers;
 
-import com.bda.chinook.entities.TrackByGenreArtist;
+import com.bda.chinook.entities.dto.TrackByGenreArtist;
 import com.bda.chinook.entities.dto.TrackDto;
 import com.bda.chinook.services.TrackService;
 import org.springframework.http.HttpStatus;

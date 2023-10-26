@@ -1,7 +1,7 @@
 package com.bda.chinook.services;
 
 import com.bda.chinook.entities.Track;
-import com.bda.chinook.entities.TrackByGenreArtist;
+import com.bda.chinook.entities.dto.TrackByGenreArtist;
 import com.bda.chinook.entities.dto.TrackDto;
 import com.bda.chinook.repositories.*;
 import com.bda.chinook.services.transformations.track.TrackDtoMapper;
@@ -9,6 +9,7 @@ import com.bda.chinook.services.transformations.track.TrackMapper;
 import com.bda.chinook.services.transformations.track.TrackToTrackByGenreArtist;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -45,6 +46,8 @@ public class TrackServiceImpl implements TrackService {
         track.setMilliseconds(entity.getMilliseconds());
         track.setBytes(entity.getBytes());
         track.setUnitPrice(entity.getUnitPrice());
+        track.setInvoiceItems(new ArrayList<>());
+        track.setPlaylists(new ArrayList<>());
         trackRepository.save(track);
     }
 

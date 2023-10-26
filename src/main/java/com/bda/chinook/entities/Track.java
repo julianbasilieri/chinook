@@ -22,12 +22,15 @@ public class Track {
     private String Name;
     @ManyToOne
     @JoinColumn(name = "AlbumId")
+    @JsonIgnore
     private Album album;
     @ManyToOne
     @JoinColumn(name = "MediaTypeId")
+    @JsonIgnore
     private MediaType mediaType;
     @ManyToOne
     @JoinColumn(name = "GenreId")
+    @JsonIgnore
     private Genre genre;
     private String Composer;
     private int Milliseconds;
@@ -35,4 +38,7 @@ public class Track {
     private float UnitPrice;
     @OneToMany(mappedBy = "track")
     List<InvoiceItems> invoiceItems;
+    @ManyToMany(mappedBy = "tracks")
+    @JsonIgnore
+    private List<Playlist> playlists;
 }

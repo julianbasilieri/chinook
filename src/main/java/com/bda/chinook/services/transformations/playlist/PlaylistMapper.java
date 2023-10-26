@@ -11,6 +11,7 @@ public class PlaylistMapper implements Function<PlaylistDto, Playlist> {
     @Override
     public Playlist apply(PlaylistDto playlistDto) {
         return new Playlist(playlistDto.getPlaylistId(),
-                playlistDto.getName());
+                playlistDto.getName(),
+                playlistDto.getTracks());
     }
 }

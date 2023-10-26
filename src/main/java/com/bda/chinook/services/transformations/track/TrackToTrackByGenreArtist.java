@@ -1,7 +1,7 @@
 package com.bda.chinook.services.transformations.track;
 
 import com.bda.chinook.entities.Track;
-import com.bda.chinook.entities.TrackByGenreArtist;
+import com.bda.chinook.entities.dto.TrackByGenreArtist;
 import org.springframework.stereotype.Service;
 
 import java.util.function.Function;

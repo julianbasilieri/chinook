@@ -1,9 +1,12 @@
 package com.bda.chinook.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.List;
 
 @Entity
 @Table(name = "playlists")
@@ -17,4 +20,10 @@ public class Playlist {
     pkColumnName = "name", valueColumnName = "seq", pkColumnValue = "playlist_id")
     private int PlaylistId;
     private String Name;
+    @ManyToMany
+    @JoinTable(name = "playlist_track",
+            joinColumns = @JoinColumn(name = "PlaylistId"),
+            inverseJoinColumns = @JoinColumn(name = "TrackId"))
+    @JsonIgnore
+    private List<Track> tracks;
 }
